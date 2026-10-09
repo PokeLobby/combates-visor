@@ -26,3 +26,8 @@ services:
       - path: /ps/*
         name: Cache-Control
         value: public, max-age=31536000, immutable
+      # Fuentes (Manrope, Space Grotesk): no cambian y no llevan ?v=; si se
+      # cambiaran, con otro nombre de archivo. 30 días sin volver a pedirlas.
+      - path: /fuentes/*
+        name: Cache-Control
+        value: public, max-age=2592000
