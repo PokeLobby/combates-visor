@@ -1,0 +1,46 @@
+{
+  "generado": "2026-10-09T05:31:14.446Z",
+  "cliente": {
+    "repo": "https://github.com/smogon/pokemon-showdown-client",
+    "commit": "218cc779512d67961e8aea0ae666d319e8ccf398"
+  },
+  "servidor": {
+    "repo": "https://github.com/smogon/pokemon-showdown",
+    "commit": "ca3cba8f4fa0db8f441d798c670ca04b7170344f",
+    "ficheros": [
+      "server/chat-formatter.ts"
+    ]
+  },
+  "datos": {
+    "url": "https://play.pokemonshowdown.com/data/",
+    "sha256": {
+      "text.js": "024815e736b70b9344e7ee6e03408535514d629add7691ad550c187c42e935aa",
+      "pokedex.js": "a0a5a707fb92a1c40b4bcc4bfc1f2dd5af7725138a607bcc994b604ae1358c6e",
+      "moves.js": "937f8930915ebf938ac28553e0c7e00a74c6b4aaea7516a541d27ce38b497ac3",
+      "items.js": "00608305a55d3a862fe4705a07c7418237d8cc8935a2a8d794cb1b6542745691",
+      "abilities.js": "dc9636a7a4c98fd7b820da3390937e3aeefd772602448f766b6de6be1009f87b",
+      "pokedex-mini.js": "108fd89933128e0384fea0c57d61bfec3ce233716f4b491120eb420d9ee9feeb",
+      "pokedex-mini-bw.js": "41b951a54eb8cd9fd3fad42610c9405ab80c33aacab90abc8601d63737586e4a"
+    }
+  },
+  "ficheros": {
+    "js/lib/jquery-1.11.0.min.js": "746e54e89161118a67bd59103c4ab55e3060735cc85c1d047c2cf04d4b12043d",
+    "js/lib/ps-polyfill.js": "7d8af5098447e7773eb4fa52bf31adbe05a91bfdcf78c69739a8042be7e250f7",
+    "js/lib/html-sanitizer-minified.js": "40f4f53e1a03b7d7ab6872ae5c4970027a95eb190317784bcb725e4ccb791481",
+    "js/battle-sound.js": "3eac48222a21b463b25419bb0f77de57656dc9f40707d9bdbf06d04538e074ee",
+    "js/battledata.js": "7477ef179fedfb8ba1df1cfba7466d017ff0cafe82e229ccba3f23e94c8e65ed",
+    "js/battle-tooltips.js": "442f507148e379917228033c52c950892b0f65cd3c5f93ee7445e82168680c73",
+    "js/battle.js": "0b018e1f57274c8c7113f6ab5af2c1bbc03af22a2597bb2f1bb73857eff9f68c",
+    "data/pokedex.js": "a0a5a707fb92a1c40b4bcc4bfc1f2dd5af7725138a607bcc994b604ae1358c6e",
+    "data/moves.js": "937f8930915ebf938ac28553e0c7e00a74c6b4aaea7516a541d27ce38b497ac3",
+    "data/items.js": "00608305a55d3a862fe4705a07c7418237d8cc8935a2a8d794cb1b6542745691",
+    "data/abilities.js": "dc9636a7a4c98fd7b820da3390937e3aeefd772602448f766b6de6be1009f87b",
+    "data/pokedex-mini.js": "108fd89933128e0384fea0c57d61bfec3ce233716f4b491120eb420d9ee9feeb",
+    "data/pokedex-mini-bw.js": "41b951a54eb8cd9fd3fad42610c9405ab80c33aacab90abc8601d63737586e4a",
+    "style/battle.css": "ade980a040ad9fc39a3fcfd2a362bf68eae744fefd7fda8901efbfb47cc49033",
+    "style/battle-log.css": "ea0e0338affbfdedf4f9e93121a28ac2190a38dd7632511fa44e6f7904d96d05",
+    "style/utilichart.css": "906d2c163696f2bc6cae275183af0a77bfbf6ab68fddf628a77f22b97e0b3263",
+    "data/graphics.js": "41d607da7a0d7712e25f520eee9548b89b102ec2d3f939edb4a1e9787eeb2297"
+  },
+  "fx": 126
+}

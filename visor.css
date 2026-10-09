@@ -1,0 +1,9 @@
+html, body { margin: 0; padding: 0; overflow: hidden; background: transparent; font-family: Verdana, Helvetica, Arial, sans-serif; }
+/* Flujo normal (no absoluto) para que el escalado en móvil (autoresize) no deje huecos. */
+.visor { width: 642px; max-width: 100%; }
+.visor .battle { position: relative; top: 0; left: 0; }
+.visor .battle-log { position: static; width: 640px; max-width: calc(100% - 2px); height: 180px; margin-top: 6px; }
+body:not(.con-registro) .battle-log { display: none; }
+.creditos { font-size: 10px; color: #777; padding: 2px 4px; max-width: 634px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.creditos a { color: inherit; }
+body.dark .creditos { color: #aaa; }

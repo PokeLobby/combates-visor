@@ -1,0 +1,28 @@
+# Sitio estático gratis en Render (Blueprint). No hay compilación en Render:
+# ps/ se genera en local con tools/build.mjs y se sube al repo.
+services:
+  - type: web
+    name: combates-visor
+    runtime: static
+    buildCommand: echo "Sin compilación; ps/ ya está generado (tools/build.mjs)"
+    staticPublishPath: .
+    pullRequestPreviewsEnabled: false
+    headers:
+      # Solo la web de PokeLobby puede meter el visor en un iframe.
+      # Mantener igual que VISOR.padres en visor-config.js.
+      - path: /*
+        name: Content-Security-Policy
+        value: "frame-ancestors https://pokelocke.com https://www.pokelocke.com https://ui-web-7hxo.onrender.com http://localhost:3000"
+      - path: /*
+        name: X-Content-Type-Options
+        value: nosniff
+      - path: /*
+        name: Referrer-Policy
+        value: strict-origin-when-cross-origin
+      # index.html siempre fresco; el resto va con ?v=<commit> en la URL.
+      - path: /index.html
+        name: Cache-Control
+        value: no-cache
+      - path: /ps/*
+        name: Cache-Control
+        value: public, max-age=31536000, immutable

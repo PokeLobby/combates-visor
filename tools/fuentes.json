@@ -1,0 +1,36 @@
+{
+  "cliente": {
+    "repo": "https://github.com/smogon/pokemon-showdown-client",
+    "commit": "218cc779512d67961e8aea0ae666d319e8ccf398",
+    "nota": "Commit del cliente oficial del que salen los ficheros de ps/. Cambiarlo solo a propósito y volver a ejecutar tools/build.mjs."
+  },
+  "servidor": {
+    "repo": "https://github.com/smogon/pokemon-showdown",
+    "commit": "ca3cba8f4fa0db8f441d798c670ca04b7170344f",
+    "ficheros": ["server/chat-formatter.ts"],
+    "nota": "battledata.js incluye el formateador de chat del servidor; se baja de este commit."
+  },
+  "datos": {
+    "url": "https://play.pokemonshowdown.com/data/",
+    "ficheros": ["text.js", "pokedex.js", "moves.js", "items.js", "abilities.js", "pokedex-mini.js", "pokedex-mini-bw.js"],
+    "nota": "Datos generados por Showdown a partir del servidor (MIT). Se bajan ya generados; su huella sha256 queda en ps/VERSION.json. Para generarlos desde el commit del servidor: `node build full` en el clon."
+  },
+  "copiar": {
+    "js/lib/jquery-1.11.0.min.js": "MIT (jQuery Foundation)",
+    "js/lib/ps-polyfill.js": "AGPLv3 (repo del cliente)",
+    "js/lib/html-sanitizer-minified.js": "Apache-2.0 (Google Caja)",
+    "js/battle-sound.js": "AGPLv3 (repo del cliente, sin cabecera propia)",
+    "js/battledata.js": "MIT (battle-dex, battle-dex-data, battle-log, battle-log-misc, battle-text-parser) + AGPLv3 (battle-teams) + MIT (chat-formatter del servidor) + textos MIT",
+    "js/battle-tooltips.js": "MIT",
+    "js/battle.js": "MIT",
+    "data/pokedex.js": "MIT", "data/moves.js": "MIT", "data/items.js": "MIT", "data/abilities.js": "MIT",
+    "data/pokedex-mini.js": "MIT", "data/pokedex-mini-bw.js": "MIT",
+    "style/battle.css": "GPLv2",
+    "style/battle-log.css": "AGPLv3 (repo del cliente, sin cabecera propia)",
+    "style/utilichart.css": "AGPLv3 (repo del cliente, sin cabecera propia)",
+    "fx/": "CC0 salvo icicle.png y lightning.png (GPLv2/GPLv3/CC-BY-SA-3.0, Clint Bellanger) y rocks.png, rock1.png, rock2.png (GPLv3, «Gilad»)"
+  },
+  "generar": {
+    "data/graphics.js": ["js/battle-animations.js (MIT)", "js/battle-animations-moves.js (CC0)"]
+  }
+}
