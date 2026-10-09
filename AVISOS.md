@@ -14,7 +14,9 @@ Pokémon Showdown no respalda ni patrocina este proyecto. «Pokémon Showdown» 
 
 | Parte | Origen | Licencia |
 |---|---|---|
-| `index.html`, `visor.js`, `visor-pre.js`, `visor-config.js`, `visor.css`, `tools/` | PokeLobby | AGPLv3 |
+| `index.html`, `visor.js`, `visor-pre.js`, `visor-config.js`, `visor.css`, `visor-es.js`, `tools/` | PokeLobby | AGPLv3 |
+| `fuentes/manrope-latin-wght-normal.woff2` | Manrope (The Manrope Project Authors), vía Fontsource | **OFL-1.1** (`fuentes/OFL-Manrope.txt`) |
+| `fuentes/space-grotesk-latin-wght-normal.woff2` | Space Grotesk (The Space Grotesk Project Authors), vía Fontsource | **OFL-1.1** (`fuentes/OFL-SpaceGrotesk.txt`) |
 | `ps/js/battle.js`, `ps/js/battle-tooltips.js` | `battle.ts`, `battle-tooltips.ts` (Guangcong Luo) | MIT (cabecera `@license MIT`) |
 | `ps/js/battledata.js` | `battle-dex.ts`, `battle-dex-data.ts`, `battle-log.ts`, `battle-log-misc.js`, `battle-text-parser.ts` (MIT); `battle-teams.ts` (sin cabecera: AGPLv3); `server/chat-formatter.ts` del servidor de Pokémon Showdown (MIT, commit `ca3cba8f4fa0db8f441d798c670ca04b7170344f`); textos `data/text.js` (generado de los datos del servidor, MIT) y `data/text-afd.js` (sin cabecera: AGPLv3) | MIT + AGPLv3 |
 | `ps/data/graphics.js` | `battle-animations.ts` (MIT) + `battle-animations-moves.ts` (CC0) | MIT + CC0 |

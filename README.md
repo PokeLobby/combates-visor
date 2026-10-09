@@ -22,7 +22,9 @@ Arena ◀─WebSocket {t:"orden"}─── Web PokeLobby ◀─postMessage {t:"e
 | `visor.js` | Puente `postMessage` ↔ motor (`Battle` de Showdown). |
 | `visor-pre.js` | Fija la ruta de los efectos `fx/` antes de cargar las animaciones. |
 | `visor-config.js` | Orígenes permitidos y modo de sprites. |
-| `visor.css` | Piel y maquetación (flujo normal, escala en móvil). |
+| `visor.css` | Piel (variables de color y fuente de la web) y maquetación. |
+| `visor-es.js` | Textos del registro en español (plantillas de `BattleText`). |
+| `fuentes/` | Manrope y Space Grotesk (OFL), las fuentes de la web. |
 | `ps/` | Ficheros del cliente oficial, ya compilados (generados con `tools/build.mjs`). |
 | `ps/VERSION.json` | Commits del cliente y del servidor, fecha y huellas sha256 de lo generado. |
 | `tools/build.mjs`, `tools/fuentes.json` | Build reproducible de `ps/` (qué ficheros y de qué commit). |
@@ -37,12 +39,39 @@ Todos los mensajes son objetos con un campo `t`. El visor solo acepta mensajes d
 
 | `t` | Campos | Qué hace |
 |---|---|---|
-| `iniciar` | `lado` (`p1`\|`p2`; por defecto `p1`), `registro` (bool: enseña el registro de texto), `oscuro` (bool), `velocidad` (`normal`\|`rapida`\|`instantanea`) | Crea un combate vacío. Mandarlo al entrar en un combate y al reconectar. |
+| `iniciar` | `lado` (`p1`\|`p2`; por defecto `p1`), `registro` (bool: enseña el registro de texto), `oscuro` (bool), `velocidad` (`normal`\|`rapida`\|`instantanea`), `idioma` (`es`\|`en`; por defecto el `?lang=` de la URL, y si no, `es`), `tema` (objeto, ver abajo), `avatares` (`{p1?, p2?}`), `altoRegistro` (px, 80-800; por defecto 200), `escalaMax` (1-3; por defecto 2) | Crea un combate vacío. Mandarlo al entrar en un combate y al reconectar. |
 | `lineas` | `lineas` (string[]) | **En directo**: añade líneas del protocolo de Showdown (las de `{t:"lineas"}` de la arena, tal cual) a la cola y las anima en orden. Si no se ha mandado `iniciar`, lo hace con las últimas opciones. |
 | `repeticion` | `lineas` (string[]) | Combate entero: lo reinicia y empieza a reproducirlo. |
 | `control` | `accion` (`pausa`\|`seguir`\|`turno`), `n` (int, con `turno`) | Pausa, sigue o salta al turno `n` (repeticiones). |
 | `velocidad` | `v` (`normal`\|`rapida`\|`instantanea`) | Cambia la velocidad de las animaciones. |
 | `sonido` | `activo` (bool) | Sonido del motor (por defecto silenciado). |
+
+### Aspecto: `tema`, tamaño, registro, idioma y retratos
+
+- **`tema`**: colores y fuentes de la web, como valores CSS (`#0f121a`, `rgba(…)`, `oklch(…)`,
+  `'Manrope Variable', sans-serif`). Claves: `fondo` (registro y lienzo), `campo` (detrás del
+  fondo del combate), `panel` (cabeceras de turno del registro), `texto`, `tenue`, `linea`,
+  `linea2`, `acento`, `fuente`, `fuenteTitulos`. Las que falten se quedan con las de
+  `visor.css`, que ya son las del tema oscuro de PokeLobby. Manrope y Space Grotesk vienen en
+  `fuentes/` (no hace falta que la web las comparta: el iframe es de otro origen).
+- **Tamaño**: el campo (640×360 en el cliente oficial) se escala con `transform: scale` al
+  ancho del iframe, hacia abajo en móvil y hacia arriba hasta `escalaMax`. Al ampliar, los
+  sprites de píxel (gen 1-5) se pintan con `image-rendering: pixelated` para que no se vean
+  borrosos. El visor manda `alto` cada vez que cambia su altura: la web debe usarlo para el
+  `height` del iframe (no hace falta sumar nada).
+- **Registro**: `registro: false` lo oculta (la web tiene el suyo); con `true` sale debajo del
+  campo con los colores del tema.
+- **Idioma**: con `es` se cambian unas 180 plantillas de `BattleText` (lo general de un combate:
+  movimientos, cambios, eficacia, críticos, estados, subidas y bajadas, clima, campos, trampas
+  y objetos habituales) y el «Turn N» del campo. Los nombres de Pokémon, movimientos,
+  habilidades y objetos siguen en inglés (el motor no tiene otros), igual que algún texto
+  poco común y las líneas «Format» / «X's team».
+- **`avatares`**: retrato de cada lado. Vale el nombre de un sprite de entrenador de Showdown
+  (`red`, `cynthia-gen4`) o su URL (`https://play.pokemonshowdown.com/sprites/trainers/<nombre>.png`).
+  Cualquier otra imagen se ignora y se pone uno fijo según el nombre del jugador.
+- **Sprites**: los elige el motor según la generación del combate, como en Showdown: gen 1-4
+  los de su juego, gen 5 los animados de Blanco/Negro (`gen5ani`) y gen 6+ los modelos 3D
+  animados (`ani`).
 
 ### Visor → web
 
@@ -65,7 +94,7 @@ const ifr = document.getElementById('visor');
 addEventListener('message', (ev) => {
   if (ev.origin !== VISOR) return;
   if (ev.data.t === 'listo') ifr.contentWindow.postMessage({ t: 'iniciar', lado: 'p1', registro: true }, VISOR);
-  if (ev.data.t === 'alto') ifr.style.height = ev.data.px + 4 + 'px';
+  if (ev.data.t === 'alto') ifr.style.height = ev.data.px + 'px';
 });
 ws.onmessage = (e) => {
   const m = JSON.parse(e.data);
